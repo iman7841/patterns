@@ -3,6 +3,7 @@ package patterns;
 import java.util.List;
 
 import patterns.iface.composite.Runner;
+import patterns.iface.proxy.Bank;
 import patterns.model.adapter.FrenchPerson;
 import patterns.model.composite.HurdleRunner;
 import patterns.model.composite.SprintRunner;
@@ -13,11 +14,26 @@ public class TestPatterns {
 
     public static void main(String args[]) {
         TestPatterns testPatterns = new TestPatterns();
+
+        System.out.println("Prototype\n==============");
         testPatterns.testPrototype();
 
+        System.out.println("Adapter\n==============");
         testPatterns.testAdapter();
 
+        System.out.println("Composite\n==============");
         testPatterns.testComposite();
+
+        System.out.println("Proxy\n==============");
+        testPatterns.testProxy();
+    }
+
+    public void testProxy() {
+        Bank bank = new Proxy();
+        bank.withdrawMoney(100);
+
+        bank.withdrawMoney(11000);
+        System.out.println();
     }
 
     public void testComposite() {
@@ -30,6 +46,7 @@ public class TestPatterns {
 
         composite.running("A");
         composite.running("B");
+        System.out.println();
     }
 
     public void testAdapter() {
@@ -37,7 +54,8 @@ public class TestPatterns {
         FrenchPerson frenchPerson = new FrenchPerson();
         frenchPerson.setNom("Imran");
         adapter.setName(frenchPerson);
-        System.out.println(adapter.getName());
+        System.out.println("French Person is convert into Normal Person is " + adapter.getName());
+        System.out.println();
     }
 
     public void testPrototype() {
