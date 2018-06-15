@@ -2,9 +2,11 @@ package patterns;
 
 import java.util.List;
 
+import patterns.abstruct.bridge.RemoteControl;
 import patterns.iface.composite.Runner;
 import patterns.iface.proxy.Bank;
 import patterns.model.adapter.FrenchPerson;
+import patterns.model.bridge.SamsungTV;
 import patterns.model.composite.HurdleRunner;
 import patterns.model.composite.SprintRunner;
 import patterns.model.prototype.Employee;
@@ -26,6 +28,14 @@ public class TestPatterns {
 
         System.out.println("Proxy\n==============");
         testPatterns.testProxy();
+
+        System.out.println("Bridge\n==============");
+        testPatterns.testBridge();
+    }
+
+    public void testBridge() {
+        RemoteControl remoteControlSamsung = new Bridge(new SamsungTV());
+        remoteControlSamsung.changeChannel();
     }
 
     public void testProxy() {
