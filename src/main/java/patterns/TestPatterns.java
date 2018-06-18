@@ -4,12 +4,15 @@ import java.util.List;
 
 import patterns.abstruct.bridge.RemoteControl;
 import patterns.iface.composite.Runner;
+import patterns.iface.decorator.Sandwich;
 import patterns.iface.proxy.Bank;
 import patterns.model.adapter.FrenchPerson;
 import patterns.model.bridge.LGTV;
 import patterns.model.bridge.SamsungTV;
 import patterns.model.composite.HurdleRunner;
 import patterns.model.composite.SprintRunner;
+import patterns.model.decorator.CheeseDecorator;
+import patterns.model.decorator.WhiteBreadSandwich;
 import patterns.model.prototype.Employee;
 import patterns.model.prototype.Office;
 
@@ -32,6 +35,17 @@ public class TestPatterns {
 
         System.out.println("Bridge\n==============");
         testPatterns.testBridge();
+
+        System.out.println("Decorator\n==============");
+        testPatterns.testDecorator();
+    }
+
+    public void testDecorator() {
+        Sandwich sandwich = new WhiteBreadSandwich("White Bread");
+        System.out.println("Price of " + sandwich.getDescription() + " " + sandwich.calculatePrice());
+
+        sandwich = new CheeseDecorator(sandwich);
+        System.out.println("Price of " + sandwich.getDescription() + " " + sandwich.calculatePrice());
     }
 
     public void testBridge() {
