@@ -6,6 +6,7 @@ import patterns.abstruct.bridge.RemoteControl;
 import patterns.iface.composite.Runner;
 import patterns.iface.proxy.Bank;
 import patterns.model.adapter.FrenchPerson;
+import patterns.model.bridge.LGTV;
 import patterns.model.bridge.SamsungTV;
 import patterns.model.composite.HurdleRunner;
 import patterns.model.composite.SprintRunner;
@@ -36,6 +37,9 @@ public class TestPatterns {
     public void testBridge() {
         RemoteControl remoteControlSamsung = new Bridge(new SamsungTV());
         remoteControlSamsung.changeChannel();
+
+        RemoteControl remoteControlLG = new Bridge(new LGTV());
+        remoteControlLG.changeChannel();
     }
 
     public void testProxy() {
