@@ -15,6 +15,7 @@ import patterns.model.decorator.CheeseDecorator;
 import patterns.model.decorator.WhiteBreadSandwich;
 import patterns.model.prototype.Employee;
 import patterns.model.prototype.Office;
+import patterns.model.strategy.Person;
 
 public class TestPatterns {
 
@@ -38,6 +39,21 @@ public class TestPatterns {
 
         System.out.println("Decorator\n==============");
         testPatterns.testDecorator();
+
+        System.out.println("Strategy\n==============");
+        testPatterns.testStrategy();
+    }
+
+    public void testStrategy() {
+        Person p1 = new Person("Imran", 100);
+        Person p2 = new Person("Ahad", 200);
+
+        Strategy strategy = new Strategy();
+        strategy.setPerson(p1);
+        strategy.movement();
+
+        strategy.setPerson(p2);
+        strategy.movement();
     }
 
     public void testDecorator() {
