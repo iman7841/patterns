@@ -1,9 +1,8 @@
 package patterns;
 
 import patterns.iface.strategy.MovementStrategy;
+import patterns.model.strategy.MovementStrategyFactory;
 import patterns.model.strategy.Person;
-import patterns.model.strategy.RunStrategy;
-import patterns.model.strategy.WalkStrategy;
 
 public class Strategy {
 
@@ -18,12 +17,7 @@ public class Strategy {
     }
 
     public void movement() {
-        MovementStrategy movementStrategy = null;
-        if (person.getSpeed() <= 100) {
-            movementStrategy = new WalkStrategy();
-        } else {
-            movementStrategy = new RunStrategy();
-        }
+        MovementStrategy movementStrategy = MovementStrategyFactory.getMovementStrategy(person.getSpeed());
         System.out.print(person.getName() + " ");
         movementStrategy.movement();
     }
